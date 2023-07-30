@@ -15,6 +15,7 @@ namespace BuisnessLayer.Concrate
 		private TimeSpan _spentTime;
 		private readonly System.Timers.Timer _spentTimeTimer = new System.Timers.Timer(interval: 1000);
 		private readonly PanelControl _airCraftPanel;
+		private AirCraft _airCraft;
 		#endregion
 		
 		#region Events
@@ -57,11 +58,8 @@ namespace BuisnessLayer.Concrate
 
 		private void CreateAirCraft()
 		{
-			var airCraft = new AirCraft(_airCraftPanel.Width)
-			{
-				Image = Image.FromFile(@"Images\airCraft.png")
-			};
-			_airCraftPanel.Controls.Add(airCraft);
+			_airCraft = new AirCraft(_airCraftPanel.Width, _airCraftPanel.Size);
+			_airCraftPanel.Controls.Add(_airCraft);
 		}
 
 		private void _spentTimeTimer_Elapsed(object sender, ElapsedEventArgs e)
@@ -86,6 +84,7 @@ namespace BuisnessLayer.Concrate
 		public void MovePlane(Direction direction)
 		{
 			if (!IsContinue) return;
+			_airCraft.Move(direction);
 		}
 		#endregion
 	}

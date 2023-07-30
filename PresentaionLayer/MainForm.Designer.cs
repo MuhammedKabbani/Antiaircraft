@@ -30,12 +30,12 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.panelInfo = new DevExpress.XtraEditors.PanelControl();
+			this.lblScore = new DevExpress.XtraEditors.LabelControl();
 			this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
 			this.lblTimer = new DevExpress.XtraEditors.LabelControl();
 			this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
 			this.panelHome = new DevExpress.XtraEditors.PanelControl();
 			this.panelBoard = new DevExpress.XtraEditors.PanelControl();
-			this.lblScore = new DevExpress.XtraEditors.LabelControl();
 			((System.ComponentModel.ISupportInitialize)(this.panelInfo)).BeginInit();
 			this.panelInfo.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.panelHome)).BeginInit();
@@ -53,6 +53,20 @@
 			this.panelInfo.Name = "panelInfo";
 			this.panelInfo.Size = new System.Drawing.Size(1167, 113);
 			this.panelInfo.TabIndex = 0;
+			// 
+			// lblScore
+			// 
+			this.lblScore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblScore.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
+			this.lblScore.Appearance.Options.UseFont = true;
+			this.lblScore.Appearance.Options.UseTextOptions = true;
+			this.lblScore.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+			this.lblScore.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+			this.lblScore.Location = new System.Drawing.Point(987, 65);
+			this.lblScore.Name = "lblScore";
+			this.lblScore.Size = new System.Drawing.Size(114, 30);
+			this.lblScore.TabIndex = 3;
+			this.lblScore.Text = "0";
 			// 
 			// labelControl3
 			// 
@@ -105,20 +119,6 @@
 			this.panelBoard.Name = "panelBoard";
 			this.panelBoard.Size = new System.Drawing.Size(1167, 374);
 			this.panelBoard.TabIndex = 2;
-			// 
-			// lblScore
-			// 
-			this.lblScore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.lblScore.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
-			this.lblScore.Appearance.Options.UseFont = true;
-			this.lblScore.Appearance.Options.UseTextOptions = true;
-			this.lblScore.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-			this.lblScore.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-			this.lblScore.Location = new System.Drawing.Point(987, 65);
-			this.lblScore.Name = "lblScore";
-			this.lblScore.Size = new System.Drawing.Size(114, 30);
-			this.lblScore.TabIndex = 3;
-			this.lblScore.Text = "0";
 			// 
 			// MainForm
 			// 
