@@ -101,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icons8-Ios7-Military-Fighter-Jet.ico" />
+    <Content Include="Resources\airCraft.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BuisnessLayer\BuisnessLayer.csproj">

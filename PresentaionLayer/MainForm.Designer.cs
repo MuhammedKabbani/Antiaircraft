@@ -131,6 +131,7 @@
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "MainForm";
 			this.Text = "Aircraft Game";
+			this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
 			((System.ComponentModel.ISupportInitialize)(this.panelInfo)).EndInit();
 			this.panelInfo.ResumeLayout(false);

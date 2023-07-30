@@ -1,7 +1,11 @@
 ﻿using BuisnessLayer.Enum;
 using BuisnessLayer.Interface;
+using DevExpress.XtraEditors;
 using System;
+using System.Drawing;
 using System.Timers;
+using System.Windows.Forms;
+
 namespace BuisnessLayer.Concrate
 {
 	public class Game : IGame
@@ -9,8 +13,8 @@ namespace BuisnessLayer.Concrate
 		#region Fields
 
 		private TimeSpan _spentTime;
-		private readonly Timer _spentTimeTimer = new Timer(interval: 1000);
-
+		private readonly System.Timers.Timer _spentTimeTimer = new System.Timers.Timer(interval: 1000);
+		private readonly PanelControl _airCraftPanel;
 		#endregion
 		
 		#region Events
@@ -36,8 +40,9 @@ namespace BuisnessLayer.Concrate
 		#endregion
 
 		#region Methods
-		public Game()
+		public Game(PanelControl airCraftPanel)
 		{
+			_airCraftPanel = airCraftPanel;
 			_spentTimeTimer.Elapsed += _spentTimeTimer_Elapsed;
 		}
 		public void StartGame()
@@ -46,6 +51,17 @@ namespace BuisnessLayer.Concrate
 			IsContinue = true;
 			_spentTimeTimer.Enabled = true;
 			_spentTimeTimer.Start();
+
+			CreateAirCraft();
+		}
+
+		private void CreateAirCraft()
+		{
+			var airCraft = new AirCraft(_airCraftPanel.Width)
+			{
+				Image = Image.FromFile(@"Images\airCraft.png")
+			};
+			_airCraftPanel.Controls.Add(airCraft);
 		}
 
 		private void _spentTimeTimer_Elapsed(object sender, ElapsedEventArgs e)

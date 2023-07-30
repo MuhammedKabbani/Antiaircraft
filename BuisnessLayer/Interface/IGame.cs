@@ -1,5 +1,6 @@
 ﻿using BuisnessLayer.Enum;
 using System;
+using System.Windows.Forms.Design;
 
 namespace BuisnessLayer.Interface
 {
@@ -8,7 +9,8 @@ namespace BuisnessLayer.Interface
 		bool IsContinue { get; }
 
 		TimeSpan SpentTime { get; }
-
+		
+		event EventHandler SpentTimeChanged;
 
 		void StartGame();
 

@@ -9,12 +9,13 @@ namespace PresentaionLayer
 {
 	public partial class MainForm : Form
 	{
-		private readonly Game _game = new Game();
+		private readonly Game _game;
 		delegate void SetTextCallback(string text);
 
 		public MainForm()
 		{
 			InitializeComponent();
+			_game = new Game(panelHome);
 			_game.SpentTimeChanged += Game_SpentTimeChanged;
 			
 		}
