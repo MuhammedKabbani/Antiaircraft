@@ -7,7 +7,6 @@ namespace BuisnessLayer.Interface
 	internal interface IGame
 	{
 		bool IsContinue { get; }
-
 		TimeSpan SpentTime { get; }
 		
 		event EventHandler SpentTimeChanged;
