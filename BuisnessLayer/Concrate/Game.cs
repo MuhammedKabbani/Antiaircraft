@@ -2,6 +2,7 @@
 using BuisnessLayer.Interface;
 using DevExpress.XtraEditors;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Timers;
 using System.Windows.Forms;
@@ -15,7 +16,9 @@ namespace BuisnessLayer.Concrate
 		private TimeSpan _spentTime;
 		private readonly System.Timers.Timer _spentTimeTimer = new System.Timers.Timer(interval: 1000);
 		private readonly PanelControl _airCraftPanel;
+		private readonly PanelControl _fieldPanel;
 		private AirCraft _airCraft;
+		private readonly List<Bullet> _bullets;
 		#endregion
 		
 		#region Events
@@ -41,10 +44,12 @@ namespace BuisnessLayer.Concrate
 		#endregion
 
 		#region Methods
-		public Game(PanelControl airCraftPanel)
+		public Game(PanelControl airCraftPanel, PanelControl fieldPanel)
 		{
 			_airCraftPanel = airCraftPanel;
 			_spentTimeTimer.Elapsed += _spentTimeTimer_Elapsed;
+			_fieldPanel = fieldPanel;
+			_bullets = new List<Bullet>();
 		}
 		public void StartGame()
 		{
@@ -78,7 +83,9 @@ namespace BuisnessLayer.Concrate
 		public void Fire()
 		{
 			if (!IsContinue) return;
-
+			Bullet bullet = new Bullet(_fieldPanel.Size,_airCraft.Center);
+			_fieldPanel.Controls.Add(bullet);
+			_bullets.Add(bullet);
 		}
 
 		public void MovePlane(Direction direction)

@@ -50,6 +50,9 @@
     <Compile Include="Concrate\AirCraft.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Concrate\Bullet.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Concrate\Game.cs" />
     <Compile Include="Enum\Direction.cs" />
     <Compile Include="Interface\IGame.cs" />

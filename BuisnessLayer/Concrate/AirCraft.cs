@@ -8,7 +8,7 @@ namespace BuisnessLayer.Concrate
 		public AirCraft(int panelWidth, Size moveAreaSize) : base (moveAreaSize)
 		{
 			Image = Image.FromFile(@"Images\airCraft.png");
-			Left = (panelWidth - Width )/ 2;
+			Center = panelWidth/ 2;
 			MoveAmount = Width;
 		}
 	}

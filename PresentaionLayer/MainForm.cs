@@ -2,6 +2,7 @@
 using BuisnessLayer.Enum;
 using DevExpress.XtraReports.Parameters;
 using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -15,9 +16,9 @@ namespace PresentaionLayer
 		public MainForm()
 		{
 			InitializeComponent();
-			_game = new Game(panelHome);
+			_game = new Game(panelHome, panelBoard);
 			_game.SpentTimeChanged += Game_SpentTimeChanged;
-			
+
 		}
 
 		private void MainForm_KeyDown(object sender, KeyEventArgs e)
@@ -38,21 +39,29 @@ namespace PresentaionLayer
 					break;
 			}
 		}
-		private void Game_SpentTimeChanged(object sender , EventArgs e)
+		private void Game_SpentTimeChanged(object sender, EventArgs e)
 		{
 			var time = _game.SpentTime.ToString(@"m\:ss");
 			SetText(time);
 		}
 		private void SetText(string text)
 		{
-			if (lblTimer.InvokeRequired)
+			try
 			{
-				SetTextCallback d = new SetTextCallback(SetText);
-				Invoke(d, new object[] { text });
+
+				if (lblTimer.InvokeRequired)
+				{
+					SetTextCallback d = new SetTextCallback(SetText);
+					Invoke(d, new object[] { text });
+				}
+				else
+				{
+					lblTimer.Text = text;
+				}
 			}
-			else
+			catch (Exception ex)
 			{
-				lblTimer.Text = text;
+				Debug.WriteLine(ex.Message);
 			}
 		}
 	}

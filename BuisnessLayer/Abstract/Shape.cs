@@ -14,6 +14,32 @@ namespace BuisnessLayer.Abstract
 			MoveAreaSize = moveAreaSize;
 		}
 
+		public new int Right
+		{
+			get => base.Right;
+			set
+			{
+				Left = value - Width;
+			}
+		}
+		public new int Bottom
+		{
+			get => base.Bottom;
+			set
+			{
+				Top = value - Height;
+			}
+		}
+		public int Center
+		{
+			get => Left + Width / 2;
+			set => Left = value - Width / 2; 
+		}
+		public int Middle
+		{
+			get => (Top + Height) / 2;
+			set => Top = value - Height / 2;
+		}
 		public Size MoveAreaSize { get; private set; }
 
 		public int MoveAmount { get;protected set; }
@@ -51,8 +77,8 @@ namespace BuisnessLayer.Abstract
 
 			var newBottom = Bottom + MoveAmount;
 
-			var bottom = newBottom > MoveAreaSize.Height ? MoveAreaSize.Height : newBottom;
-			Top = bottom - Height;
+			Bottom = newBottom > MoveAreaSize.Height ? MoveAreaSize.Height : newBottom;
+
 			return Bottom == MoveAreaSize.Height;
 		}
 		private bool MoveRight()
@@ -61,8 +87,8 @@ namespace BuisnessLayer.Abstract
 
 			var newRight = Right + MoveAmount;
 
-			var right = newRight > MoveAreaSize.Width ? MoveAreaSize.Width : newRight;
-			Left = right - Width;
+			Right= newRight > MoveAreaSize.Width ? MoveAreaSize.Width : newRight;
+
 			return Right == MoveAreaSize.Width;
 		}
 		private bool MoveLeft()
