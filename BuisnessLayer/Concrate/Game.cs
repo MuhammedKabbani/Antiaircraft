@@ -3,10 +3,7 @@ using BuisnessLayer.Interface;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.Timers;
-using System.Windows.Forms;
 
 namespace BuisnessLayer.Concrate
 {
@@ -22,16 +19,16 @@ namespace BuisnessLayer.Concrate
 		private readonly PanelControl _fieldPanel;
 		private readonly List<Bullet> _bullets;
 		private readonly List<Plane> _planes;
+		private int _score;
+		private int _planePoint;
 		#endregion
 
 		#region Events
-
 		public event EventHandler SpentTimeChanged;
-
+		public event EventHandler ScoreChanged;
 		#endregion
 
 		#region Properties
-
 		public bool IsContinue { get; private set; }
 		public TimeSpan SpentTime
 		{
@@ -43,7 +40,15 @@ namespace BuisnessLayer.Concrate
 				SpentTimeChanged?.Invoke(this, EventArgs.Empty);
 			}
 		}
-
+		public int Score 
+		{
+			get => _score;
+			private set
+			{
+				_score = value;
+				ScoreChanged?.Invoke(new object(),EventArgs.Empty);
+			}
+		}
 		#endregion
 
 		#region Methods
@@ -61,6 +66,8 @@ namespace BuisnessLayer.Concrate
 			_fieldPanel = fieldPanel;
 			_bullets = new List<Bullet>();
 			_planes = new List<Plane>();
+			_score = 0;
+			_planePoint = 35;
 		}
 		public void StartGame()
 		{
@@ -70,6 +77,7 @@ namespace BuisnessLayer.Concrate
 			_fieldPanel.Controls.Clear();
 			_airCraftPanel.Controls.Clear();
 			SpentTime = TimeSpan.FromSeconds(0);
+			Score = 0;
 			_spentTimeTimer.Start();
 			_movingTimer.Start();
 			_createPlaneTimer.Start();
@@ -137,7 +145,6 @@ namespace BuisnessLayer.Concrate
 				}
 			}
 		}
-
 		public void Fire()
 		{
 			if (!IsContinue) return;
@@ -157,6 +164,8 @@ namespace BuisnessLayer.Concrate
 					_fieldPanel.Controls.Remove(hittenBullet);
 					_planes.Remove(plane);
 					_bullets.Remove(hittenBullet);
+					Score += _planePoint;
+					break;
 				}
 			}
 		}

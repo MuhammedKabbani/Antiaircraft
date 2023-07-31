@@ -18,6 +18,7 @@ namespace PresentaionLayer
 			InitializeComponent();
 			_game = new Game(panelHome, panelBoard);
 			_game.SpentTimeChanged += Game_SpentTimeChanged;
+			_game.ScoreChanged += Game_ScoreChanged;
 
 		}
 
@@ -63,6 +64,10 @@ namespace PresentaionLayer
 			{
 				Debug.WriteLine(ex.Message);
 			}
+		}
+		private void Game_ScoreChanged(object sender , EventArgs e)
+		{
+			lblScore.Text = _game.Score.ToString();
 		}
 	}
 }
