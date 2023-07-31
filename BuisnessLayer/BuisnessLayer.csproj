@@ -54,6 +54,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Concrate\Game.cs" />
+    <Compile Include="Concrate\Plane.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Enum\Direction.cs" />
     <Compile Include="Interface\IGame.cs" />
     <Compile Include="Interface\IMoveable.cs" />
