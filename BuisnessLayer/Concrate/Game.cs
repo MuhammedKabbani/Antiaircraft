@@ -21,11 +21,14 @@ namespace BuisnessLayer.Concrate
 		private readonly List<Plane> _planes;
 		private int _score;
 		private int _planePoint;
+		private int _level;
 		#endregion
 
 		#region Events
 		public event EventHandler SpentTimeChanged;
 		public event EventHandler ScoreChanged;
+		public event EventHandler LevelChanged;
+		public event EventHandler GameEnded;
 		#endregion
 
 		#region Properties
@@ -47,6 +50,18 @@ namespace BuisnessLayer.Concrate
 			{
 				_score = value;
 				ScoreChanged?.Invoke(new object(),EventArgs.Empty);
+				CheckTheLevel();
+				
+			}
+		}
+		public int Level
+		{ 
+			get => _level;
+			private set 
+			{
+				_level = value;
+				LevelChanged?.Invoke(new object(), EventArgs.Empty);
+				IncreaseDifficulty();
 			}
 		}
 		#endregion
@@ -68,6 +83,7 @@ namespace BuisnessLayer.Concrate
 			_planes = new List<Plane>();
 			_score = 0;
 			_planePoint = 35;
+			_level = 1;
 		}
 		public void StartGame()
 		{
@@ -94,6 +110,8 @@ namespace BuisnessLayer.Concrate
 			_createPlaneTimer.Stop();
 			_planes.Clear();
 			_bullets.Clear();
+			ResetDifficulty();
+			GameEnded?.Invoke(new object(), EventArgs.Empty);
 		}
 		private void CreateAirCraft()
 		{
@@ -173,6 +191,31 @@ namespace BuisnessLayer.Concrate
 		{
 			if (!IsContinue) return;
 			_airCraft.Move(direction);
+		}
+		private void CheckTheLevel()
+		{
+			if(_level*105 < _score)
+			{
+				Level++;
+			}
+		}
+		private void IncreaseDifficulty()
+		{
+			Plane.IncreaseMoveRatio();
+			if(_createPlaneTimer.Interval > 900)
+			{
+				_createPlaneTimer.Interval -= 60;
+			}
+			else
+			{
+				_movingTimer.Interval += 1;
+			}
+		}
+		private void ResetDifficulty()
+		{
+			_movingTimer.Interval = 5;
+			_createPlaneTimer.Interval = 2500;
+			Plane.ResetMoveRatio();
 		}
 		#endregion
 	}

@@ -30,6 +30,8 @@
 		{
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.panelInfo = new DevExpress.XtraEditors.PanelControl();
+			this.lblLevel = new DevExpress.XtraEditors.LabelControl();
+			this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
 			this.lblScore = new DevExpress.XtraEditors.LabelControl();
 			this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
 			this.lblTimer = new DevExpress.XtraEditors.LabelControl();
@@ -44,6 +46,8 @@
 			// 
 			// panelInfo
 			// 
+			this.panelInfo.Controls.Add(this.lblLevel);
+			this.panelInfo.Controls.Add(this.labelControl2);
 			this.panelInfo.Controls.Add(this.lblScore);
 			this.panelInfo.Controls.Add(this.labelControl3);
 			this.panelInfo.Controls.Add(this.lblTimer);
@@ -53,6 +57,30 @@
 			this.panelInfo.Name = "panelInfo";
 			this.panelInfo.Size = new System.Drawing.Size(1167, 113);
 			this.panelInfo.TabIndex = 0;
+			// 
+			// lblLevel
+			// 
+			this.lblLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.lblLevel.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
+			this.lblLevel.Appearance.Options.UseFont = true;
+			this.lblLevel.Location = new System.Drawing.Point(107, 35);
+			this.lblLevel.Name = "lblLevel";
+			this.lblLevel.Size = new System.Drawing.Size(18, 40);
+			this.lblLevel.TabIndex = 5;
+			this.lblLevel.Text = "1";
+			// 
+			// labelControl2
+			// 
+			this.labelControl2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 20F);
+			this.labelControl2.Appearance.Options.UseFont = true;
+			this.labelControl2.Location = new System.Drawing.Point(12, 35);
+			this.labelControl2.Name = "labelControl2";
+			this.labelControl2.Size = new System.Drawing.Size(74, 40);
+			this.labelControl2.TabIndex = 4;
+			this.labelControl2.Text = "Level";
 			// 
 			// lblScore
 			// 
@@ -151,6 +179,8 @@
 		private DevExpress.XtraEditors.PanelControl panelHome;
 		private DevExpress.XtraEditors.PanelControl panelBoard;
 		private DevExpress.XtraEditors.LabelControl lblScore;
+		private DevExpress.XtraEditors.LabelControl lblLevel;
+		private DevExpress.XtraEditors.LabelControl labelControl2;
 	}
 }
 

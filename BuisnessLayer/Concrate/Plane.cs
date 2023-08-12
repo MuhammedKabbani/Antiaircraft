@@ -9,13 +9,13 @@ namespace BuisnessLayer.Concrate
 	{
 
 		private static readonly Random random = new Random();
+		private static double _moveRatio = 0.03;
 		public Plane(Size moveAreaSize) : base(moveAreaSize)
 		{
 			Image = Image.FromFile(@"Images\Plane.png");
-			MoveAmount = (int)(Height*.05);
+			MoveAmount = (int)(Height* _moveRatio);
 			SetStartPosition();
 		}
-
 		private void SetStartPosition()
 		{
 			Left = random.Next(MoveAreaSize.Width - Width + 1);
@@ -33,6 +33,15 @@ namespace BuisnessLayer.Concrate
 				}
 			}
 			return HittenBullet;
+		}
+		
+		public static void IncreaseMoveRatio()
+		{
+			_moveRatio += 0.001;
+		}
+		public static void ResetMoveRatio()
+		{
+			_moveRatio = 0.03;
 		}
 	}
 }

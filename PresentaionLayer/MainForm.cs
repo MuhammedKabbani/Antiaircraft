@@ -19,9 +19,10 @@ namespace PresentaionLayer
 			_game = new Game(panelHome, panelBoard);
 			_game.SpentTimeChanged += Game_SpentTimeChanged;
 			_game.ScoreChanged += Game_ScoreChanged;
+			_game.LevelChanged += Game_LevelChanged;
+			_game.GameEnded += Game_GameEnded;
 
 		}
-
 		private void MainForm_KeyDown(object sender, KeyEventArgs e)
 		{
 			switch (e.KeyCode)
@@ -68,6 +69,14 @@ namespace PresentaionLayer
 		private void Game_ScoreChanged(object sender , EventArgs e)
 		{
 			lblScore.Text = _game.Score.ToString();
+		}
+		private void Game_LevelChanged(object sender , EventArgs e)
+		{
+			lblLevel.Text = _game.Level.ToString();
+		}
+		private void Game_GameEnded(object sender, EventArgs e)
+		{
+			lblLevel.Text = "1";
 		}
 	}
 }

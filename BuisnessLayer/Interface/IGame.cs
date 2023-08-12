@@ -8,9 +8,12 @@ namespace BuisnessLayer.Interface
 	{
 		bool IsContinue { get; }
 		TimeSpan SpentTime { get; }
+		int Level { get; }
 		int Score { get; }
 		event EventHandler SpentTimeChanged;
 		event EventHandler ScoreChanged;
+		event EventHandler LevelChanged;
+		event EventHandler GameEnded;
 		void StartGame();
 		void MovePlane(Direction direction);
 		void Fire();
